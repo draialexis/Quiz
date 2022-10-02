@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="400dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical"
@@ -16,12 +16,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/TVQuestion"
+            android:id="@+id/textViewQuestion"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="@string/question" />
+            android:text="@string/lorem_ipsum" />
 
         <LinearLayout
             android:id="@+id/btnLayout"
@@ -35,22 +36,44 @@
             <Button
                 android:id="@+id/btnTrue"
                 android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="#888"
+                android:text="@string/true_btn"
                 android:textColor="@color/black"
-                android:text="@string/true_btn" />
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/btnFalse"
                 android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="#888"
+                android:text="@string/false_btn"
                 android:textColor="@color/black"
-                android:text="@string/false_btn" />
+                style="?android:attr/buttonBarButtonStyle" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="220dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:backgroundTint="#848"
+            android:text="@string/next_question_btn"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnRestart"
+            android:layout_width="220dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:backgroundTint="#f88"
+            android:text="@string/restart_btn"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 

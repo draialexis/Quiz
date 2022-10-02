@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="in_the_middle">En plein milieu</string>
+    <string name="false_btn">FAUX</string>
+    <string name="true_btn">VRAI</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
+    <string name="correct_answer">Oui!</string>
+    <string name="wrong_answer">Kwô?</string>
+    <string name="next_question_btn">SUIVANTE</string>
+    <string name="no_more_questions">Fin des questions</string>
+    <string name="restart_btn">RECOMMENCER</string>
+</resources>
