@@ -1,6 +1,7 @@
 package fr.iut.pm
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -9,13 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.iut.pm.data.Stub
 import fr.iut.pm.model.TrueFalseQuestion
 
+const val TAG = "MyQuizActivity"
+
 
 class QuizActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.println(Log.INFO, TAG, "Creating...")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-//        val TAG = this.localClassName
 
         val questions = Stub().loadQuestions(resources)
 
@@ -32,6 +36,31 @@ class QuizActivity : AppCompatActivity() {
             iterator = questions.iterator()
             nextQuestion(textViewQuestion, iterator)
         }
+    }
+
+    override fun onStart() {
+        Log.println(Log.INFO, TAG, "Starting...")
+        super.onStart()
+    }
+
+    override fun onResume() {
+        Log.println(Log.INFO, TAG, "Resuming...")
+        super.onResume()
+    }
+
+    override fun onPause() {
+        Log.println(Log.INFO, TAG, "Pausing...")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        Log.println(Log.INFO, TAG, "Stopping...")
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        Log.println(Log.INFO, TAG, "Destroying...")
+        super.onDestroy()
     }
 
     private fun assignAnswerToButton(btn: Button, toast: String) {
@@ -64,8 +93,6 @@ class QuizActivity : AppCompatActivity() {
                 wrong,
                 resources.getString(R.string.wrong_answer)
             )
-
         }
     }
-
 }
