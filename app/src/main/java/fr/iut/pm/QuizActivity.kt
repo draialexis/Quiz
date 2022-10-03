@@ -64,6 +64,7 @@ class QuizActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         // Save the user's current game state
+        Log.println(Log.INFO, TAG, "SAVING?...")
         outState.run {
 //            putInt(myVar, savedVar)
         }
