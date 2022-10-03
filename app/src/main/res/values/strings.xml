@@ -3,13 +3,12 @@
     <string name="in_the_middle">Right in the middle</string>
     <string name="false_btn">FALSE</string>
     <string name="true_btn">TRUE</string>
-    <string name="question1" translatable="false">Yo mama... something something</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="correct_answer">That\'s right!</string>
     <string name="wrong_answer">U wot m8?</string>
     <string name="next_question_btn">NEXT</string>
+    <string name="question1" translatable="false">Yo mama... something something</string>
     <string name="question2" translatable="false">My mama... yada yada yada</string>
     <string name="question3" translatable="false">Their mama... blah blah</string>
-    <string name="no_more_questions">No further questions</string>
     <string name="restart_btn">RESTART</string>
 </resources>

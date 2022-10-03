@@ -14,7 +14,8 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        val questions = Stub().loadQuestions()
+        val questions = Stub().loadQuestions(resources)
+
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
         val btnNext = findViewById<Button>(R.id.btnNext)
         val btnRestart = findViewById<Button>(R.id.btnRestart)
@@ -42,7 +43,7 @@ class QuizActivity : AppCompatActivity() {
         if (iterator.hasNext()) {
 
             val obj: TrueFalseQuestion = iterator.next()
-            textView.text = resources.getString(obj.question)
+            textView.text = obj.question
 
             val correct: Button
             val wrong: Button
@@ -63,8 +64,6 @@ class QuizActivity : AppCompatActivity() {
                 resources.getString(R.string.wrong_answer)
             )
 
-        } else {
-            textView.text = resources.getString(R.string.no_more_questions)
         }
     }
 
