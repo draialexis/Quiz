@@ -19,8 +19,8 @@
             android:id="@+id/textViewQuestion"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginBottom="20dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/lorem_ipsum" />
 
@@ -35,42 +35,45 @@
 
             <Button
                 android:id="@+id/btnTrue"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="#888"
                 android:text="@string/true_btn"
-                android:textColor="@color/black"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btnFalse"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="#888"
                 android:text="@string/false_btn"
-                android:textColor="@color/black"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
-        <Button
+        <ImageButton
             android:id="@+id/btnNext"
-            android:layout_width="220dp"
+            android:layout_width="108dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_next_btn"
             android:backgroundTint="#848"
-            android:text="@string/next_question_btn"
+            android:contentDescription="@string/next_question_btn"
             android:textColor="@color/black" />
+        <!--            android:text="@string/next_question_btn"-->
+        <!--            android:background="@drawable/ic_next_btn"-->
 
         <Button
             android:id="@+id/btnRestart"
             android:layout_width="220dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:backgroundTint="#f88"
             android:text="@string/restart_btn"
             android:textColor="@color/black" />

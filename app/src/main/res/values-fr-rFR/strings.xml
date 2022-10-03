@@ -7,6 +7,6 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="correct_answer">Oui!</string>
     <string name="wrong_answer">Kwô?</string>
-    <string name="next_question_btn">SUIVANTE</string>
+    <string name="next_question_btn">(SUIVANTE)</string>
     <string name="restart_btn">RECOMMENCER</string>
 </resources>

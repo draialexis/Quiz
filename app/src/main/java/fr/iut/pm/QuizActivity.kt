@@ -2,6 +2,7 @@ package fr.iut.pm
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,20 +15,20 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
+//        val TAG = this.localClassName
+
         val questions = Stub().loadQuestions(resources)
 
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
-        val btnNext = findViewById<Button>(R.id.btnNext)
-        val btnRestart = findViewById<Button>(R.id.btnRestart)
 
         var iterator = questions.iterator()
         nextQuestion(textViewQuestion, iterator)
 
-        btnNext.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnNext).setOnClickListener {
             nextQuestion(textViewQuestion, iterator)
         }
 
-        btnRestart.setOnClickListener {
+        findViewById<Button>(R.id.btnRestart).setOnClickListener {
             iterator = questions.iterator()
             nextQuestion(textViewQuestion, iterator)
         }
