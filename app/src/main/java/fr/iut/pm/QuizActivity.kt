@@ -20,7 +20,6 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-
         val questions = Stub().loadQuestions(resources)
 
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
@@ -62,6 +61,17 @@ class QuizActivity : AppCompatActivity() {
         Log.println(Log.INFO, TAG, "Destroying...")
         super.onDestroy()
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        // Save the user's current game state
+        outState.run {
+//            putInt(myVar, savedVar)
+        }
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(outState)
+    }
+
 
     private fun assignAnswerToButton(btn: Button, toast: String) {
         btn.setOnClickListener {
