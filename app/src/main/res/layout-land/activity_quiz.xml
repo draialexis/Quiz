@@ -69,16 +69,6 @@
         <!--            android:text="@string/next_question_btn"-->
         <!--            android:background="@drawable/ic_next_btn"-->
 
-        <Button
-            android:id="@+id/btnRestart"
-            android:layout_width="220dp"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#f88"
-            android:text="@string/restart_btn"
-            android:textColor="@color/black" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

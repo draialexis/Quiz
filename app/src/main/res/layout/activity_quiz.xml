@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical"
@@ -37,7 +37,7 @@
                 android:id="@+id/btnTrue"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="#888"
                 android:text="@string/true_btn"
@@ -47,7 +47,7 @@
                 android:id="@+id/btnFalse"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="#888"
                 android:text="@string/false_btn"
@@ -67,16 +67,6 @@
             android:textColor="@color/black" />
         <!--            android:text="@string/next_question_btn"-->
         <!--            android:background="@drawable/ic_next_btn"-->
-
-        <Button
-            android:id="@+id/btnRestart"
-            android:layout_width="220dp"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="#f88"
-            android:text="@string/restart_btn"
-            android:textColor="@color/black" />
 
     </LinearLayout>
 

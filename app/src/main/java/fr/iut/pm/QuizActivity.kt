@@ -15,6 +15,8 @@ const val TAG = "MyQuizActivity"
 
 class QuizActivity : AppCompatActivity() {
 
+    private var questionIndex: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.println(Log.INFO, TAG, "Creating...")
         super.onCreate(savedInstanceState)
@@ -24,16 +26,10 @@ class QuizActivity : AppCompatActivity() {
 
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
 
-        var iterator = questions.iterator()
-        nextQuestion(textViewQuestion, iterator)
+        nextQuestion(textViewQuestion, questions)
 
         findViewById<ImageButton>(R.id.btnNext).setOnClickListener {
-            nextQuestion(textViewQuestion, iterator)
-        }
-
-        findViewById<Button>(R.id.btnRestart).setOnClickListener {
-            iterator = questions.iterator()
-            nextQuestion(textViewQuestion, iterator)
+            nextQuestion(textViewQuestion, questions)
         }
     }
 
@@ -48,6 +44,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
+
         Log.println(Log.INFO, TAG, "Pausing...")
         super.onPause()
     }
@@ -80,30 +77,34 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
-    private fun nextQuestion(textView: TextView, iterator: Iterator<TrueFalseQuestion>) {
-        if (iterator.hasNext()) {
+    private fun nextQuestion(textView: TextView, questions: Collection<TrueFalseQuestion>) {
 
-            val obj: TrueFalseQuestion = iterator.next()
-            textView.text = obj.question
+        val obj: TrueFalseQuestion = questions.elementAt(questionIndex)
 
-            val correct: Button
-            val wrong: Button
-
-            if (obj.answer) {
-                correct = findViewById(R.id.btnTrue)
-                wrong = findViewById(R.id.btnFalse)
-            } else {
-                correct = findViewById(R.id.btnFalse)
-                wrong = findViewById(R.id.btnTrue)
-            }
-            assignAnswerToButton(
-                correct,
-                resources.getString(R.string.correct_answer)
-            )
-            assignAnswerToButton(
-                wrong,
-                resources.getString(R.string.wrong_answer)
-            )
+        if(questionIndex >= questions.size - 1) {
+            questionIndex = 0
         }
+
+        textView.text = obj.question
+
+        val correct: Button
+        val wrong: Button
+
+        if (obj.answer) {
+            correct = findViewById(R.id.btnTrue)
+            wrong = findViewById(R.id.btnFalse)
+        } else {
+            correct = findViewById(R.id.btnFalse)
+            wrong = findViewById(R.id.btnTrue)
+        }
+        assignAnswerToButton(
+            correct,
+            resources.getString(R.string.correct_answer)
+        )
+        assignAnswerToButton(
+            wrong,
+            resources.getString(R.string.wrong_answer)
+        )
+
     }
 }

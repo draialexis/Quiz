@@ -9,4 +9,7 @@
     <string name="wrong_answer">Kwô?</string>
     <string name="next_question_btn">(SUIVANTE)</string>
     <string name="restart_btn">RECOMMENCER</string>
+    <string name="question1">Question 1</string>
+    <string name="question2">Question 2</string>
+    <string name="question3">Question 3</string>
 </resources>
