@@ -16,6 +16,7 @@ const val TAG = "MyQuizActivity"
 class QuizActivity : AppCompatActivity() {
 
     private var questionIndex: Int = 0
+    private val QUESTION_INDEX: String = "questionIndex"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.println(Log.INFO, TAG, "Creating...")
@@ -23,13 +24,19 @@ class QuizActivity : AppCompatActivity() {
         setContentView(R.layout.activity_quiz)
 
         val questions = Stub().loadQuestions(resources)
-
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
 
-        nextQuestion(textViewQuestion, questions)
+        if (savedInstanceState != null) {
+            with(savedInstanceState) {
+                Log.println(Log.WARN, TAG, "LOADING...")
+                questionIndex = getInt(QUESTION_INDEX)
+            }
+        }
+
+        showQuestion(textViewQuestion, questions)
 
         findViewById<ImageButton>(R.id.btnNext).setOnClickListener {
-            nextQuestion(textViewQuestion, questions)
+            showNextQuestion(textViewQuestion, questions)
         }
     }
 
@@ -44,7 +51,6 @@ class QuizActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-
         Log.println(Log.INFO, TAG, "Pausing...")
         super.onPause()
     }
@@ -61,15 +67,13 @@ class QuizActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         // Save the user's current game state
-        Log.println(Log.INFO, TAG, "SAVING?...")
+        Log.println(Log.WARN, TAG, "SAVING...")
         outState.run {
-//            putInt(myVar, savedVar)
+            println("saving idx: $questionIndex")
+            putInt(QUESTION_INDEX, questionIndex)
         }
-
-        // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(outState)
     }
-
 
     private fun assignAnswerToButton(btn: Button, toast: String) {
         btn.setOnClickListener {
@@ -77,13 +81,22 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
-    private fun nextQuestion(textView: TextView, questions: Collection<TrueFalseQuestion>) {
-
-        val obj: TrueFalseQuestion = questions.elementAt(questionIndex)
-
-        if(questionIndex >= questions.size - 1) {
+    private fun nextIndex(size: Int) {
+        if (questionIndex >= size - 1) {
             questionIndex = 0
+        } else {
+            questionIndex++
         }
+    }
+
+
+    private fun showNextQuestion(textView: TextView, questions: Collection<TrueFalseQuestion>) {
+        nextIndex(questions.size)
+        showQuestion(textView, questions)
+    }
+
+    private fun showQuestion(textView: TextView, questions: Collection<TrueFalseQuestion>) {
+        val obj: TrueFalseQuestion = questions.elementAt(questionIndex)
 
         textView.text = obj.question
 
@@ -105,6 +118,5 @@ class QuizActivity : AppCompatActivity() {
             wrong,
             resources.getString(R.string.wrong_answer)
         )
-
     }
 }
