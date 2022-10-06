@@ -10,4 +10,6 @@
     <string name="question1">Yo mama…</string>
     <string name="question2">My mama…</string>
     <string name="question3">Their mama…</string>
+    <string name="are_you_sure">Are you sure about that?</string>
+    <string name="show_answer">Show answer</string>
 </resources>

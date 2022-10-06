@@ -11,12 +11,12 @@ import fr.iut.pm.data.Stub
 import fr.iut.pm.model.TrueFalseQuestion
 
 const val TAG = "MyQuizActivity"
+const val QUESTION_INDEX: String = "questionIndex"
 
 
 class QuizActivity : AppCompatActivity() {
 
     private var questionIndex: Int = 0
-    private val QUESTION_INDEX: String = "questionIndex"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.println(Log.INFO, TAG, "Creating...")
