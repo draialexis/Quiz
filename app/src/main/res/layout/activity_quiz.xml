@@ -65,9 +65,20 @@
             android:backgroundTint="#848"
             android:contentDescription="@string/next_question_btn"
             android:textColor="@color/black" />
-        <!--            android:text="@string/next_question_btn"-->
-        <!--            android:background="@drawable/ic_next_btn"-->
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCheat"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="#888"
+        android:text="@string/cheat"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

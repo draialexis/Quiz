@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">Quiz</string>
     <string name="in_the_middle">Right in the middle</string>
-    <string name="false_btn">FALSE</string>
-    <string name="true_btn">TRUE</string>
+    <string name="false_btn">False</string>
+    <string name="true_btn">True</string>
+    <string name="next_question_btn">(Next)</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
     <string name="correct_answer">That\'s right!</string>
     <string name="wrong_answer">U wot m8?</string>
-    <string name="next_question_btn">(NEXT)</string>
     <string name="question1">Yo mama…</string>
     <string name="question2">My mama…</string>
     <string name="question3">Their mama…</string>
     <string name="are_you_sure">Are you sure about that?</string>
     <string name="show_answer">Show answer</string>
+    <string name="cheat">Cheat</string>
 </resources>
