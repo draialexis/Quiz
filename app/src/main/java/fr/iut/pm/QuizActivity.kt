@@ -1,5 +1,6 @@
 package fr.iut.pm
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -37,6 +38,11 @@ class QuizActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.btnNext).setOnClickListener {
             showNextQuestion(textViewQuestion, questions)
+        }
+
+        findViewById<Button>(R.id.btnCheat).setOnClickListener {
+            val cheatIntent = Intent(this, CheatActivity::class.java)
+            startActivity(cheatIntent)
         }
     }
 
