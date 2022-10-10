@@ -14,4 +14,5 @@
     <string name="are_you_sure">Êtes-vous sûr?</string>
     <string name="show_answer">Voir réponse</string>
     <string name="cheat">Tricher</string>
+    <string name="answer_goes_here">la réponse va ici</string>
 </resources>

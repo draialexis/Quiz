@@ -13,11 +13,13 @@ import fr.iut.pm.model.TrueFalseQuestion
 
 const val TAG = "MyQuizActivity"
 const val QUESTION_INDEX: String = "questionIndex"
+const val CHEAT_ANSWER: String = "cheatAnswer"
 
 
 class QuizActivity : AppCompatActivity() {
 
     private var questionIndex: Int = 0
+    private var cheatAnswer: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.println(Log.INFO, TAG, "Creating...")
@@ -31,6 +33,7 @@ class QuizActivity : AppCompatActivity() {
             with(savedInstanceState) {
                 Log.println(Log.WARN, TAG, "LOADING...")
                 questionIndex = getInt(QUESTION_INDEX)
+                cheatAnswer = getBoolean(CHEAT_ANSWER)
             }
         }
 
@@ -42,6 +45,7 @@ class QuizActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnCheat).setOnClickListener {
             val cheatIntent = Intent(this, CheatActivity::class.java)
+            cheatIntent.putExtra(CHEAT_ANSWER, cheatAnswer)
             startActivity(cheatIntent)
         }
     }
@@ -77,6 +81,7 @@ class QuizActivity : AppCompatActivity() {
         outState.run {
             println("saving idx: $questionIndex")
             putInt(QUESTION_INDEX, questionIndex)
+            putBoolean(CHEAT_ANSWER, cheatAnswer)
         }
         super.onSaveInstanceState(outState)
     }
@@ -101,10 +106,16 @@ class QuizActivity : AppCompatActivity() {
         showQuestion(textView, questions)
     }
 
+    private fun storeAnswer(answer: Boolean) {
+        cheatAnswer = answer
+    }
+
     private fun showQuestion(textView: TextView, questions: Collection<TrueFalseQuestion>) {
         val obj: TrueFalseQuestion = questions.elementAt(questionIndex)
 
         textView.text = obj.question
+
+        storeAnswer(obj.answer)
 
         val correct: Button
         val wrong: Button
