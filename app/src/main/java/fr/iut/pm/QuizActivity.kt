@@ -1,5 +1,6 @@
 package fr.iut.pm
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
 import fr.iut.pm.data.Stub
 import fr.iut.pm.model.TrueFalseQuestion
@@ -20,11 +22,18 @@ class QuizActivity : AppCompatActivity() {
 
     private var questionIndex: Int = 0
     private var cheatAnswer: Boolean = false
+    private var isCheater: Boolean = false
+    private val cheatLauncher = registerForActivityResult(StartActivityForResult())
+    { result ->
+        if (result.resultCode == Activity.RESULT_OK)
+            isCheater = result.data?.getBooleanExtra(HAS_CHEATED, false) == true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.println(Log.INFO, TAG, "Creating...")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
+
 
         val questions = Stub().loadQuestions(resources)
         val textViewQuestion = findViewById<TextView>(R.id.textViewQuestion)
@@ -44,9 +53,14 @@ class QuizActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnCheat).setOnClickListener {
-            val cheatIntent = Intent(this, CheatActivity::class.java)
-            cheatIntent.putExtra(CHEAT_ANSWER, cheatAnswer)
-            startActivity(cheatIntent)
+            val cheatIntent = Intent(this, CheatActivity::class.java).apply {
+                putExtra(CHEAT_ANSWER, cheatAnswer)
+            }
+            cheatLauncher.launch(cheatIntent)
+        }
+
+        if (isCheater) {
+            Toast.makeText(this, "cheater", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -88,7 +102,12 @@ class QuizActivity : AppCompatActivity() {
 
     private fun assignAnswerToButton(btn: Button, toast: String) {
         btn.setOnClickListener {
-            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
+            if (isCheater) {
+                Toast.makeText(this, "cheater", Toast.LENGTH_LONG).show()
+                isCheater = false
+            } else {
+                Toast.makeText(this, toast, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
